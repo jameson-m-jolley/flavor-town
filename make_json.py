@@ -49,14 +49,6 @@ class compilation:
 
 
 
-                    
-                    
-                    
-                
-
-
-
-
 def main():
     data = pd.read_csv("data/recipes_ingredients.csv")
     comp = compilation()

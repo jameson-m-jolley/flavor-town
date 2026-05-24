@@ -33,3 +33,7 @@ c[adds best fit] -- if not at end or at max depth -->b
 d[done]
 ```
 
+
+# getting stared 
+
+you will need to download the dataset [https://www.kaggle.com/datasets/realalexanderwei/food-com-recipes-with-ingredients-and-tags?resource=download](https://www.kaggle.com/datasets/realalexanderwei/food-com-recipes-with-ingredients-and-tags?resource=download)
