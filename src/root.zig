@@ -19,15 +19,23 @@ test "basic add functionality" {
 
 //markove type
 //---------------------------------------------
-pub fn markove_type() type {
+pub fn markove_type(comptime size: usize) type {
     return struct {
         //we need the probs in a map
         json_path: []const u8,
+        index: std.AutoHashMap([]const u8, u32), // name -> id
+        chain: std.AutoHashMap(u32, std.AutoHashMap(u32, f32)),
+        states: std.ArrayListAlignedUnmanaged([size]f32),
 
         pub fn init() @This() {
             return .{};
         }
     };
+}
+
+test "markove_type" {
+    const m_test = markove_type(20);
+    _ = m_test;
 }
 
 //---------------------------------------------

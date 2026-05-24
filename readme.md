@@ -36,4 +36,5 @@ d[done]
 
 # getting stared 
 
-you will need to download the dataset [https://www.kaggle.com/datasets/realalexanderwei/food-com-recipes-with-ingredients-and-tags?resource=download](https://www.kaggle.com/datasets/realalexanderwei/food-com-recipes-with-ingredients-and-tags?resource=download)
+you will need to download the dataset [https://www.kaggle.com/datasets/realalexanderwei/food-com-recipes-with-ingredients-and-tags?resource=download](https://www.kaggle.com/datasets/realalexanderwei/food-com-recipes-with-ingredients-and-tags?resource=download) and place this in the data folder
+you will also need UV a management system for pip 
