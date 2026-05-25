@@ -19,6 +19,7 @@ class compilation:
         # Saving to a file
         with open('data/markov_data.json', 'w') as json_file:
             json.dump(this_map, json_file, indent=4)
+    
 
 
     # this is how we add to the mappings 

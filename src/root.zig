@@ -26,13 +26,24 @@ pub fn markove_type(
             return ret;
         }
 
-        pub fn load_csv(this: *@This()) !void {
+        pub fn load_csv(this: *@This(), io: std.Io) !void {
             // 1. allocate a buffer for stdin reads
-            var file = try std.fs.cwd().openFile(this.path, .{ .mode = .read_only });
-            defer file.close();
+            var file = try std.Io.Dir.cwd().openFile(io, this.path, .{ .mode = .read_only });
+            defer file.close(io);
             var buffer: [reader_line_memory_len]u8 = undefined;
-            var reader_w = file.reader(&buffer);
-            var reader: *std.io.Reader = &reader_w.interface;
+            var reader_w = file.reader(io, &buffer);
+            var reader = &reader_w.interface;
+
+            while (reader.takeDelimiterInclusive('\n')) |str| {
+                // we now have the line we need to split it
+                //var split = std.mem.splitAny(u8, str, "[");
+                var split = std.mem.splitSequence(u8, str, "\",\"");
+                while (split.next()) |line| {
+                    std.debug.print("{s}\n\n", .{line});
+                }
+            } else |err| {
+                std.debug.print("{}", .{err});
+            }
         }
     };
 }
