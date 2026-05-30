@@ -35,11 +35,14 @@ pub fn markove_type(
             var reader = &reader_w.interface;
 
             while (reader.takeDelimiterInclusive('\n')) |str| {
+                const fixed = if (str.len >= 4) str[2 .. str.len - 3] else &[_]u8{};
                 // we now have the line we need to split it
                 //var split = std.mem.splitAny(u8, str, "[");
-                var split = std.mem.splitSequence(u8, str, "\",\"");
+                var split = std.mem.splitSequence(u8, fixed, ",");
                 while (split.next()) |line| {
-                    std.debug.print("{s}\n\n", .{line});
+                    // un quote the vals
+                    const unquote = if (line.len >= 3) line[3 .. line.len - 2] else &[_]u8{};
+                    std.debug.print("{s}\n\n", .{unquote});
                 }
             } else |err| {
                 std.debug.print("{}", .{err});
