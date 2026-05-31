@@ -13,5 +13,6 @@ pub fn main(init: std.process.Init) !void {
         "data/clean.csv",
         .{0} ** 251105,
     );
+    defer pred.deinit();
     try pred.load_csv(io);
 }
